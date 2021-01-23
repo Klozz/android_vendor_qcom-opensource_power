@@ -90,6 +90,7 @@ ifneq ($(TARGET_POWERHAL_MODE_EXT),)
     LOCAL_SRC_FILES += ../../../../$(TARGET_POWERHAL_MODE_EXT)
 endif
 
+ifneq ($(TARGET_PROVIDES_POWER_HAL), true)
 ifeq ($(call is-board-platform-in-list,trinket), true)
 LOCAL_MODULE := power.qcom
 LOCAL_MODULE_TAGS := optional
@@ -104,6 +105,7 @@ LOCAL_CFLAGS += -Wno-unused-parameter -Wno-unused-variable
 LOCAL_VENDOR_MODULE := true
 LOCAL_VINTF_FRAGMENTS := power.xml
 include $(BUILD_EXECUTABLE)
+endif
 endif
 
 
